@@ -34,6 +34,7 @@ Theo mình hiểu thì đơn giản Nginx sẽ tạo ra web server trên VPS cũ
 ```
 
 #### Managing your Nginx
+
 ```sudo service nginx reload (to reload)
    sudo service nginx start
    sudo service nginx stop
@@ -62,8 +63,7 @@ Next, **mkdir /var/www/projects** (projects folder is folder contains your proje
 You can see the default config by using **cat default**
 Here is my config (using PHP):
 
-```
-server{
+```server{
         listen 80;
         server_name kinn.com;
         access_log /var/www/projects/example/logs/access.log;
