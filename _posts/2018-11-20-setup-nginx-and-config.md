@@ -45,7 +45,7 @@ Theo mình hiểu thì đơn giản Nginx sẽ tạo ra web server trên VPS cũ
 To add your virtual domain on your local: **sudo vim /etc/hosts** and add your local domain you want.
 
 Example: ![
-](https://github.com/ntheanh201/ntheanh201.github.io/blob/master/images/nginx_server.png)
+](https://raw.githubusercontent.com/ntheanh201/ntheanh201.github.io/master/images/nginx_server.png)
 
 
 Terminal **cd /etc/nginx/sites-available** and create your virtual domain.
@@ -62,29 +62,23 @@ Next, **mkdir /var/www/projects** (projects folder is folder contains your proje
 You can see the default config by using **cat default**
 Here is my config (using PHP):
 
-```server{
+```
+server{
         listen 80;
         server_name kinn.com;
-
         access_log /var/www/projects/example/logs/access.log;
         error_log /var/www/projects/example/logs/error.log;
-
         root /var/www/projects/example/public;
-
         index index.php index.html;
-
         location / {
                 try_files $uri $uri/ /index.php$args;
         }
         location ~ \.php$ {
                 include snippets/fastcgi-php.conf;
-
-           #     # With php-fpm (or other unix sockets);
-           #      fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-           #     # With php-cgi (or other tcp sockets);
                 fastcgi_pass 127.0.0.1:9000;
         }
     }
+
 ```
 
 Enable your site by using **sudo ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/**
