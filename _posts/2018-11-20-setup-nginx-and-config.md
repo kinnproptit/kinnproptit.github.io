@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title: How to install Nginx and config on your local system
@@ -9,14 +10,10 @@ Theo mình hiểu thì đơn giản Nginx sẽ tạo ra web server trên VPS cũ
 ### Installation
 
 #### Installing Nginx
-
-    sudo apt update
-    sudo apt install nginx
+```sudo apt update
+   sudo apt install nginx```
 #### Checking your Nginx
-
-    systemctl status nginx
-
-```
+`systemctl status nginx`
 nginx.service - A high performance web server and a reverse proxy server
    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
    Active: active (running) since Fri 2018-04-20 16:08:19 UTC; 3 days ago
@@ -26,30 +23,27 @@ nginx.service - A high performance web server and a reverse proxy server
    CGroup: /system.slice/nginx.service
            ├─2369 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
            └─2380 nginx: worker process
-```
 #### Managing your Nginx
-
+```
     sudo service nginx reload (to reload)
     sudo service nginx start
     sudo service nginx stop
-    sudo service nginx restart
+    sudo service nginx restart```
 #### Config
 To add your virtual domain on your local: **sudo vim /etc/hosts** and add your local domain you want.
 Example: ![
 ](https://github.com/ntheanh201/ntheanh201.github.io/blob/master/images/nginx_server.png)
 
 Terminal **cd /etc/nginx/sites-available** and create your virtual domain.
-
-    sudo vim yourdomain.com
+`sudo vim yourdomain.com`
 Then, **sudo chown -R xxx:xxx /var/www** xxx: your ubuntu username and password.
 Next, **mkdir /var/www/projects** (projects folder is folder contains your projects)
-
-    mkdir /var/www/projects/yourdomain
-    touch /var/www/projects/yourdomain/index.html
+mkdir /var/www/projects/yourdomain
+    touch /var/www/projects/yourdomain/index.html`
 You can see default config by using **cat default**
 Here is my config (using PHP):
 
-    server{
+```server{
         listen 80;
         server_name kinn.com;
 
@@ -72,9 +66,8 @@ Here is my config (using PHP):
                 fastcgi_pass 127.0.0.1:9000;
         }
     }
-   Enable your site by using **sudo ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/**
-   
-
-    sudo service nginx reload
+```
+Enable your site by using **sudo ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/**
+`sudo service nginx reload`
     
 
