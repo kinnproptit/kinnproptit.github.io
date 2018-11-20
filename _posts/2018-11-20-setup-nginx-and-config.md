@@ -12,7 +12,6 @@ Theo mình hiểu thì đơn giản Nginx sẽ tạo ra web server trên VPS cũ
 #### Installing Nginx
 ```sudo apt update
    sudo apt install nginx```
-
 #### Checking your Nginx
 `systemctl status nginx`
 nginx.service - A high performance web server and a reverse proxy server
@@ -30,7 +29,6 @@ nginx.service - A high performance web server and a reverse proxy server
     sudo service nginx start
     sudo service nginx stop
     sudo service nginx restart```
-
 #### Config
 To add your virtual domain on your local: **sudo vim /etc/hosts** and add your local domain you want.
 Example: ![
@@ -67,8 +65,8 @@ Here is my config (using PHP):
            #     # With php-cgi (or other tcp sockets);
                 fastcgi_pass 127.0.0.1:9000;
         }
-    }```
-
+    }
+```
 Enable your site by using **sudo ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/**
 `sudo service nginx reload`
     
