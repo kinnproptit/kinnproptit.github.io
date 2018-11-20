@@ -4,7 +4,6 @@ title: Chia sẻ về Nginx và config cấu hình
 categories: Technology
 tags: nginx
 ---
-
 ### Introduction
 
 Nginx is one of the most popular web servers in the world and is responsible for hosting some of the largest and highest-traffic sites on the internet. It is more resource-friendly than Apache in most cases and can be used as a web server or reverse proxy.
@@ -16,7 +15,8 @@ Theo mình hiểu thì đơn giản Nginx sẽ tạo ra web server trên VPS cũ
 #### Installing Nginx
 
 ```sudo apt update
-   sudo apt install nginx```
+   sudo apt install nginx
+```
 
 #### Checking your Nginx
 
@@ -30,14 +30,15 @@ Theo mình hiểu thì đơn giản Nginx sẽ tạo ra web server trên VPS cũ
     Tasks: 2 (limit: 1153)
    CGroup: /system.slice/nginx.service
            ├─2369 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
-           └─2380 nginx: worker process```
+           └─2380 nginx: worker process
+```
 
 #### Managing your Nginx
+```sudo service nginx reload (to reload)
+   sudo service nginx start
+   sudo service nginx stop
+   sudo service nginx restart
 ```
-    sudo service nginx reload (to reload)
-    sudo service nginx start
-    sudo service nginx stop
-    sudo service nginx restart```
 
 #### Config
 
@@ -54,8 +55,9 @@ Then, **sudo chown -R xxx:xxx /var/www** xxx: your ubuntu username and password.
 
 Next, **mkdir /var/www/projects** (projects folder is folder contains your projects)
 
-`mkdir /var/www/projects/yourdomain
-    touch /var/www/projects/yourdomain/index.html`
+```mkdir /var/www/projects/yourdomain
+   touch /var/www/projects/yourdomain/index.html
+```
 
 You can see the default config by using **cat default**
 Here is my config (using PHP):
@@ -82,7 +84,8 @@ Here is my config (using PHP):
            #     # With php-cgi (or other tcp sockets);
                 fastcgi_pass 127.0.0.1:9000;
         }
-    }```
+    }
+```
 
 Enable your site by using **sudo ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/**
 
